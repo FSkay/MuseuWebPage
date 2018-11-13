@@ -21,7 +21,7 @@ switch ($metodo){
     case 'POST':
         $entrada = file_get_contents('php://input');
         $artefato = json_decode($entrada);
-        $pdo->query("INSERT INTO livro(nome, epoca, material, doador, img) values('$artefato->nome', $artefato->epoca, $artefato->matr, ); ");
+        $pdo->query("INSERT INTO tbcadastro_artefato(nome, epoca, material, doador, img) values('$artefato->nome', $artefato->epoca, $artefato->material, $artefato->doador, $artefato); ");
         break;
     case 'PUT':
         $entrada = file_get_contents('php://input');
