@@ -5,10 +5,10 @@
     <title></title>
 </head>
 <body>
-    <form method="post" action="cadastrar_artefatos.php.php">
+    <form method="post" action="cadastrar_artefatos.php">
     Nome: <input type="text" name="nome" id="nome"> <br>
     
-    Ano: <input type="number" name="ano" id="ano"><br>
+    epoca: <input type="number" name="epoca" id="epoca"><br>
     
     Doador: <input type="text" name="doador" id="doador"><br>
     
@@ -24,10 +24,11 @@ if (isset($_POST['nome'])) {
         die('Error, não pude conectar: ' . $e->getMessage() . '  <br>  ');
     }
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $strInserir = "INSERT INTO livro(nome, ano, doador, img) VALUES(:nome, :ano, :doador, :img)";
+    $strInserir = "INSERT INTO livro(nome, epoca, material, doador, img) VALUES(:nome, :epoca, :material, :doador, :img)";
     $comando = $pdo->prepare($strInserir, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
     $comando->execute(array(':nome' => $_POST['nome'],
-        ':ano' => $_POST['ano'],
+        ':epoca' => $_POST['epoca'],
+        ':material' => $_POST['epoca'],
         ':doador' => $_POST['doador'],
         ':img' => $_POST['img']));
 }

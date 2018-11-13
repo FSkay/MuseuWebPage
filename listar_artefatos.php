@@ -10,9 +10,9 @@ $metodo =  $_SERVER['REQUEST_METHOD'];
 switch ($metodo){
     case 'GET':
         if(isset($_GET['nome'])) {
-            $consulta = $pdo->query('SELECT * FROM livro WHERE nome like "%' . $_GET['nome'] . '%" ');
+            $consulta = $pdo->query('SELECT * FROM tbcadastro_artefato WHERE nome like "%' . $_GET['nome'] . '%" ');
         } else{
-            $consulta = $pdo->query('SELECT * FROM livro');
+            $consulta = $pdo->query('SELECT * FROM tbcadastro_artefato');
         }
         $_Artfatos = $consulta->fetchAll(PDO::FETCH_ASSOC);
         header('Content-Type: application/json; charset=utf-8');
@@ -21,7 +21,7 @@ switch ($metodo){
     case 'POST':
         $entrada = file_get_contents('php://input');
         $artefato = json_decode($entrada);
-        $pdo->query("INSERT INTO livro(nome, ano) values('$artefato->nome', $livro->ano); ");
+        $pdo->query("INSERT INTO livro(nome, epoca, material, doador, img) values('$artefato->nome', $artefato->epoca, $artefato->matr, ); ");
         break;
     case 'PUT':
         $entrada = file_get_contents('php://input');
