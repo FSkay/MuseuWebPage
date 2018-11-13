@@ -18,23 +18,23 @@ try {
         case 'POST':
             $entrada = file_get_contents('php://input');
             $artefato = json_decode($entrada);
-            $pdo->query("INSERT INTO tbcadastro_artefato(nome, epoca, material, doador, img) values('$artefato->nome', $artefato->epoca, $artefato->material, $artefato->doador, $artefato);");
+            $pdo->query("INSERT INTO tbcadastro_artefato(nome, epoca, material, doador, img) values('$artefato->nome', $artefato->epoca, $artefato->material, $artefato->doador, $artefato->img);");
             break;
         case 'PUT':
             $entrada = file_get_contents('php://input');
             $artefato = json_decode($entrada);
-            $sql = "UPDATE tbcadastro_artefato SET nome = '$artefato->nome', epoca = '$artefato->epoca', material = $artefato->ma, bairro = '$cliente->bairro'  WHERE id = $cliente->id; ";
+            $sql = "UPDATE tbcadastro_artefato SET nome = '$artefato->nome', epoca = '$artefato->epoca', material = $artefato->material, doador = '$artefato->doador'  WHERE id = $artefato->idmom; ";
             $pdo->query($sql);
             break;
         case 'DELETE':
             $entrada = file_get_contents('php://input');
             $cliente = json_decode($entrada);
-            $sql = "DELETE FROM tbcadastro_artefato WHERE id = '$cliente->id'; ";
+            $sql = "DELETE FROM tbcadastro_artefato WHERE id = '$artefato->idmom'; ";
             $pdo->query($sql);
-            $consulta = $pdo->query('SELECT * FROM cliente');
+            $consulta = $pdo->query('SELECT * FROM tbcadastro_artefato');
             $clientes = $consulta->fetchAll(PDO::FETCH_ASSOC);
             header('Content-Type: application/json; charset=utf-8');
-            echo json_encode($clientes);
+            echo json_encode($artefato);
             break;
     }
 } catch (Exception $e) {
