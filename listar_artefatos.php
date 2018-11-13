@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=biblioteca;
+    $pdo = new PDO("mysql:host=localhost;dbname=dbmuseu;
                        charset=utf8",'root', '');
 } catch (PDOException $e) {
     die('Error, não pude conectar: ' . $e->getMessage() . '  <br>  ');
