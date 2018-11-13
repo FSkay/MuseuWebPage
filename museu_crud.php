@@ -22,8 +22,8 @@ try {
             break;
         case 'PUT':
             $entrada = file_get_contents('php://input');
-            $cliente = json_decode($entrada);
-            $sql = "UPDATE tbcadastro_artefato SET nome = '$cliente->nome', rua = '$cliente->rua', numero = $cliente->numero, bairro = '$cliente->bairro'  WHERE id = $cliente->id; ";
+            $artefato = json_decode($entrada);
+            $sql = "UPDATE tbcadastro_artefato SET nome = '$artefato->nome', rua = '$cliente->rua', numero = $cliente->numero, bairro = '$cliente->bairro'  WHERE id = $cliente->id; ";
             $pdo->query($sql);
             break;
         case 'DELETE':
