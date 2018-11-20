@@ -10,7 +10,7 @@ $metodo =  $_SERVER['REQUEST_METHOD'];
 switch ($metodo){
     case 'GET':
         if(isset($_GET['nome'])) {
-            $consulta = $pdo->query('SELECT * FROM livro WHERE nome like "%' . $_GET['nome'] . '%" ');
+            $consulta = $pdo->query('SELECT * FROM tbcadastro_artefatos WHERE nome like "%' . $_GET['nome'] . '%" ');
         } else{
             $consulta = $pdo->query('SELECT * FROM tbcadastro_artefatos');
         }
